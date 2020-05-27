@@ -189,46 +189,7 @@ punch()
 
 那么这就很方便了，方便在我们的调用上，比如例子中的，使用了装饰器后，直接在原本的函数上加上装饰器的语法糖就可以了，本函数也无虚任何改变，调用的地方也不需修改。
 
-不过这里一直有个问题，就是输出打卡信息的是固定的，那么我们需要通过参数来传递，装饰器该怎么写呢？装饰器中的函数可以使用 `*args` 可变参数，可是仅仅使用 `*args` 是不能完全包括所有参数的情况，比如关键字参数就不能了，为了能兼容关键字参数，我们还需要加上 `**kwargs` 。
 
-因此，装饰器的最终形式可以写成这样：
-
-```Python
-import time
-
-
-def decorator(func):
-    def punch(*args, **kwargs):
-        print(time.strftime('%Y-%m-%d', time.localtime(time.time())))
-        func(*args, **kwargs)
-
-    return punch
-
-
-@decorator
-def punch(name, department):
-    print('昵称：{0}  部门：{1} 上班打卡成功'.format(name, department))
-
-
-@decorator
-def print_args(reason, **kwargs):
-    print(reason)
-    print(kwargs)
-
-
-punch('两点水', '做鸭事业部')
-print_args('两点水', sex='男', age=99)
-```
-
-输出结果如下：
-
-```
-2018-01-09
-昵称：两点水  部门：做鸭事业部 上班打卡成功
-2018-01-09
-两点水
-{'sex': '男', 'age': 99}
-```
 ## 匿名函数(lambda)
 lambda提供了快速编写简单函数的能力。对于偶尔为之的行为，lambda让你不再需要在编码时跳转到其他位置去编写函数。
 lambda表达式定义一个匿名的函数，如果这个函数仅在编码的位置使用到，你可以现场定义、直接使用：
