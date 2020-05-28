@@ -123,6 +123,7 @@ IT 行业相对于一般传统行业，发展更新速度更快，一旦停止�
     - [re.match 和 re.search](/Article/PythonBasis/python14/6.md)
 * [闭包](/Article/PythonBasis/python15/1.md)
 * [装饰器](/Article/PythonBasis/python16/1.md)
+* [异常](https://www.runoob.com/python3/python3-errors-execptions.html)
 
 
 
